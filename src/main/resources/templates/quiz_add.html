@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>4択問題の登録</title>
+</head>
+<body>
+    <h1>4択問題の登録</h1>
+
+    <form th:action="@{/quiz/add}" method="post" th:object="${quiz}">
+
+        <div>
+            <label>問題文：</label><br>
+            <textarea th:field="*{question}" rows="3" cols="40"></textarea>
+        </div>
+
+        <div>
+            <label>選択肢1：</label><br>
+            <input type="text" th:field="*{choice1}">
+        </div>
+
+        <div>
+            <label>選択肢2：</label><br>
+            <input type="text" th:field="*{choice2}">
+        </div>
+
+        <div>
+            <label>選択肢3：</label><br>
+            <input type="text" th:field="*{choice3}">
+        </div>
+
+        <div>
+            <label>選択肢4：</label><br>
+            <input type="text" th:field="*{choice4}">
+        </div>
+
+        <div>
+            <label>正解番号（1〜4）：</label><br>
+            <input type="number" th:field="*{answer}" min="1" max="4">
+        </div>
+
+        <br>
+        <button type="submit">登録する</button>
+    </form>
+
+</body>
+</html>

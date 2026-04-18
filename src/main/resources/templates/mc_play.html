@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>4択クイズ</title>
+</head>
+<body>
+
+<h2>4択クイズ</h2>
+<p th:text="${msg}" style="color:red;"></p>
+<p th:text="${quiz.question}"></p>
+
+<form th:action="@{/quiz/mc/check}" method="post">
+
+    <input type="hidden" name="id" th:value="${quiz.id}">
+
+    <label>
+        <input type="radio" name="answer" value="1">
+        <span th:text="${quiz.choice1}"></span>
+    </label><br>
+
+    <label>
+        <input type="radio" name="answer" value="2">
+        <span th:text="${quiz.choice2}"></span>
+    </label><br>
+
+    <label>
+        <input type="radio" name="answer" value="3">
+        <span th:text="${quiz.choice3}"></span>
+    </label><br>
+
+    <label>
+        <input type="radio" name="answer" value="4">
+        <span th:text="${quiz.choice4}"></span>
+    </label><br>
+
+    <br>
+    <button type="submit">回答</button>
+</form>
+
+</body>
+</html>

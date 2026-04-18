@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>結果</title>
+</head>
+<body>
+
+    <h2>結果</h2>
+
+    <!-- 正解数の表示 -->
+    <p>10問中 [[${correctCount}]] 問正解！</p>
+
+    <a th:href="@{/quiz}">戻る</a>
+
+</body>
+</html>

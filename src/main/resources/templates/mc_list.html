@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>4択クイズ一覧</title>
+</head>
+<body>
+
+<h1>4択クイズ一覧</h1>
+
+<p><a th:href="@{/quiz/mc/add}">新規作成</a></p>
+
+<table border="1" style="table-layout: fixed; width: 800px;">
+    <tr>
+        <th>ID</th>
+        <th>問題文</th>
+        <th>選択肢1</th>
+        <th>選択肢2</th>
+        <th>選択肢3</th>
+        <th>選択肢4</th>
+        <th>正解</th>
+        <th>編集</th>
+        <th>削除</th>
+    </tr>
+
+    <tr th:each="q : ${list}">
+        <td th:text="${q.id}"></td>
+        <td th:text="${q.question}"></td>
+        <td th:text="${q.choice1}"></td>
+        <td th:text="${q.choice2}"></td>
+        <td th:text="${q.choice3}"></td>
+        <td th:text="${q.choice4}"></td>
+        <td th:text="${q.answer}"></td>
+
+        <td>
+            <a th:href="@{/quiz/mc/edit/{id}(id=${q.id})}">編集</a>
+        </td>
+
+        <td>
+            <form th:action="@{/quiz/mc/delete}" method="post">
+                <input type="hidden" name="id" th:value="${q.id}">
+                <input type="submit" value="削除">
+            </form>
+        </td>
+    </tr>
+</table>
+<!-- ★ CSV登録リンクを追加 ★ -->
+<p><a th:href="@{/quiz/mc/csv}">CSV一括登録</a></p>
+<p><a th:href="@{/}">トップへ戻る</a></p>
+
+</body>
+</html>

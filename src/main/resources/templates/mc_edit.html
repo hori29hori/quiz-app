@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>4択クイズ編集</title>
+</head>
+<body>
+
+<h1>4択クイズ編集</h1>
+
+<form th:action="@{/quiz/mc/update}" method="post" th:object="${quiz}">
+    <input type="hidden" th:field="*{id}">
+
+    <label>問題文：</label><br>
+    <textarea th:field="*{question}" rows="4" cols="50"></textarea><br><br>
+
+    <label>選択肢1：</label><br>
+    <input type="text" th:field="*{choice1}"><br><br>
+
+    <label>選択肢2：</label><br>
+    <input type="text" th:field="*{choice2}"><br><br>
+
+    <label>選択肢3：</label><br>
+    <input type="text" th:field="*{choice3}"><br><br>
+
+    <label>選択肢4：</label><br>
+    <input type="text" th:field="*{choice4}"><br><br>
+
+    <label>正解番号（1〜4）：</label><br>
+    <input type="number" min="1" max="4" th:field="*{answer}"><br><br>
+
+    <input type="submit" value="更新">
+</form>
+
+<p><a th:href="@{/quiz/mc/list}">一覧へ戻る</a></p>
+
+
+</body>
+</html>
+
