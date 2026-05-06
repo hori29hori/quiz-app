@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>4択クイズ CSV一括登録</h1>
+<h1> CSV一括登録</h1>
 
 <form th:action="@{/quiz/mc/csv}" method="post" enctype="multipart/form-data">
     <label>CSVファイルを選択：</label><br>
@@ -16,7 +16,7 @@
 
 <p th:if="${msg}" th:text="${msg}" style="color:blue"></p>
 
-<p><a th:href="@{/quiz/mc/list}">4択クイズ一覧へ戻る</a></p>
+<p><a th:href="@{/quiz/mc/list}">一覧へ戻る</a></p>
 
 </body>
 </html>

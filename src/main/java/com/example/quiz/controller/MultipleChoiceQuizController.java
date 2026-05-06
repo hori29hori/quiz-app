@@ -119,14 +119,28 @@ public class MultipleChoiceQuizController {
     }
     @PostMapping("/quiz/mc/csv")
     public String uploadCsv(@RequestParam("file") MultipartFile file, Model model) {
+    	
+    	 if (file.isEmpty()) {
+    	        model.addAttribute("msg", "ファイルを選択してください");
+    	        return "csv";
+    	    }
 
         try {
             List<String> lines = new BufferedReader(
                     new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))
                     .lines().toList();
+            
+            if (lines.isEmpty()) {
+                model.addAttribute("msg", "CSVファイルが空です");
+                return "csv";
+            }
 
             for (String line : lines) {
                 String[] data = line.split(",");
+                
+                if (data.length < 6) {
+                    continue;
+                }
 
                 MultipleChoiceQuiz quiz = new MultipleChoiceQuiz();
                 quiz.setQuestion(data[0]);
